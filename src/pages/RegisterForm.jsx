@@ -44,6 +44,7 @@ export default function RegisterForm() {
     };
     fetch(API_BASE_URL, {
       method: "POST",
+      mode: "cors",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
