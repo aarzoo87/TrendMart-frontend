@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import App from "./App";
 import "@mantine/core/styles.css";
-import reportWebVitals from "./reportWebVitals";
+import "@mantine/notifications/styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,9 +17,8 @@ root.render(
       withGlobalStyles
       withNormalizeCSS
     >
+      <Notifications position="top-right" zIndex={2077} />
       <App />
     </MantineProvider>
   </React.StrictMode>,
 );
-
-reportWebVitals();
