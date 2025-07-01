@@ -17,18 +17,24 @@ import {
   IconBuildingStore,
 } from "@tabler/icons-react";
 import { useMantineColorScheme } from "@mantine/core";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function SellerHeaderMenu() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
-    { label: "Dashboard", path: "/" },
-    { label: "Products", path: "/favorites" },
-    { label: "Orders", path: "/collections" },
-    { label: "Sales", path: "/ss" },
+    { label: "Dashboard", path: "/seller/dashboard" },
+    { label: "Products", path: "/seller/products" },
+    { label: "Orders", path: "/seller/orders" },
+    { label: "Sales", path: "/sales_reports" },
   ];
+
+  const handlelogout = () => {
+    localStorage.removeItem("loginDetails");
+    navigate("/login");
+  };
 
   return (
     <Box
@@ -62,7 +68,7 @@ function SellerHeaderMenu() {
                     location.pathname === item.path ? "filled" : "subtle"
                   }
                   color="blue"
-                  size="lg"
+                  size="md"
                   radius="xl"
                 >
                   {item.label}
@@ -121,6 +127,7 @@ function SellerHeaderMenu() {
                 <Menu.Item
                   color="red"
                   icon={<IconLogout size={16} stroke={1.5} />}
+                  onClick={handlelogout}
                 >
                   Logout
                 </Menu.Item>

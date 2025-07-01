@@ -24,9 +24,6 @@ export default function LoginForm() {
 
   const handleCheckLogin = (e) => {
     e.preventDefault();
-    console.log("loginEmail", loginEmail);
-    console.log("loginPass", loginPass);
-    console.log("loginRole", loginRole);
     const loginParams = {
       api: "get_login_details",
       email: loginEmail,
@@ -49,8 +46,14 @@ export default function LoginForm() {
             color: "green",
             icon: <IconCheck />,
           });
-          if (loginRole === 1) {
-            navigate("/seller/home");
+          const loginDetails = {
+            role: loginRole,
+            email: loginEmail,
+          };
+          const encodedLoginDetails = btoa(JSON.stringify(loginDetails));
+          localStorage.setItem("loginDetails", encodedLoginDetails);
+          if (loginRole === "1") {
+            navigate("/seller/dashboard");
           } else {
             navigate("/customer/home");
           }
