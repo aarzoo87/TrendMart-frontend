@@ -2,23 +2,16 @@ import React, { useState, useEffect } from "react";
 import SellerHeaderMenu from "./SellerHeaderMenu";
 import {
 	Container,
-	MultiSelect,
 	Group,
 	Select,
 	Text,
-	Title,
-	Radio,
 	Card,
-	Divider,
 	TextInput,
 	Modal,
 	Button,
-	ScrollArea,
 	Image,
-	Badge,
 	Stack,
 	Box,
-	Anchor,
 	Grid,
 	NumberInput,
 	Textarea,
@@ -27,15 +20,15 @@ import {
 	ActionIcon,
 	SimpleGrid,
 } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { useDisclosure } from "@mantine/hooks";
-import { IconCheck, IconX, IconPencil, IconTrash } from "@tabler/icons-react";
+import { IconX, IconPencil, IconTrash } from "@tabler/icons-react";
 import Loader from "../GeneralPage";
 
 function SellerProducts() {
 	const API_BASE_URL = process.env.REACT_APP_API_URL;
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 	const [
 		addProductOpened,
 		{ open: openAddProductModal, close: closeAddProductModal },
