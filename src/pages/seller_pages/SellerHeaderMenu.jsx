@@ -68,7 +68,7 @@ function SellerHeaderMenu() {
                     location.pathname === item.path ? "filled" : "subtle"
                   }
                   color="blue"
-                  size="md"
+                  size="sm"
                   radius="xl"
                 >
                   {item.label}

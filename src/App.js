@@ -6,6 +6,10 @@ import CustomerHeaderMenu from "./pages/customer_pages/CustomerHeaderMenu";
 import SellerHeaderMenu from "./pages/seller_pages/SellerHeaderMenu";
 import SellerDashboard from "./pages/seller_pages/SellerDashboard";
 import SellerProducts from "./pages/seller_pages/SellerProducts";
+import CustomerProduct from "./pages/customer_pages/CustomerProduct";
+import ProductDetailPage from "./pages/customer_pages/ProductDetailPage";
+import CustomerCart from "./pages/customer_pages/CustomerCart";
+import CustomerCheckout from "./pages/customer_pages/CustomerCheckout";
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/customer/home" element={<CustomerHeaderMenu />} />
+          <Route path="/customer/products" element={<CustomerProduct />} />
+          <Route path="/customer/cart" element={<CustomerCart />} />
+          <Route path="/customer/checkout" element={<CustomerCheckout />} />
+          <Route path="/product/:product_id" element={<ProductDetailPage />} />
           <Route path="/seller/home" element={<SellerHeaderMenu />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
