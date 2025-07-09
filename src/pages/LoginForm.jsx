@@ -49,6 +49,7 @@ export default function LoginForm() {
           const loginDetails = {
             role: loginRole,
             email: loginEmail,
+            user_id: data.data,
           };
           const encodedLoginDetails = btoa(JSON.stringify(loginDetails));
           localStorage.setItem("loginDetails", encodedLoginDetails);

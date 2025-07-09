@@ -8,17 +8,15 @@ import "@mantine/notifications/styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <MantineProvider
-      theme={{
-        fontFamily: "Inter, sans-serif",
-        primaryColor: "blue",
-      }}
-      withGlobalStyles
-      withNormalizeCSS
-    >
-      <Notifications position="top-right" zIndex={2077} />
-      <App />
-    </MantineProvider>
-  </React.StrictMode>,
+  <MantineProvider
+    theme={{
+      fontFamily: "Inter, sans-serif",
+      primaryColor: "blue",
+    }}
+    withGlobalStyles
+    withNormalizeCSS
+  >
+    <Notifications position="top-right" zIndex={2077} />
+    <App />
+  </MantineProvider>,
 );

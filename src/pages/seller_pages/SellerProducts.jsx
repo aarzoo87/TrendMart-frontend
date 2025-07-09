@@ -44,6 +44,7 @@ function SellerProducts() {
 	const [productStock, setProductStock] = useState("");
 	const [productDesc, setProductDesc] = useState("");
 	const [productList, setProductList] = useState([]);
+	const [editProductId, setEditProductId] = useState("0");
 
 	const handleOpenAddProductModal = () => {
 		openAddProductModal();
@@ -93,6 +94,7 @@ function SellerProducts() {
 		e.preventDefault();
 		const formData = new FormData();
 		formData.append("api", "add_product");
+		formData.append("product_id", editProductId);
 		formData.append("product_image", file);
 		formData.append("product_name", productName);
 		formData.append("product_category", productCategory);
@@ -108,12 +110,13 @@ function SellerProducts() {
 			.then((res) => res.json())
 			.then((data) => {
 				handleCloseModal();
-				getProductData();
+				getProductData("submit");
 			})
 			.catch((err) => console.error(err));
 	};
 
-	const getProductData = () => {
+	const getProductData = (value) => {
+		console.log(value);
 		fetch(API_BASE_URL, {
 			method: "POST",
 			headers: {
@@ -147,19 +150,32 @@ function SellerProducts() {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.status === 1) {
-					getProductData();
+					getProductData("delete");
 				}
 			})
 			.catch((err) => console.error(err));
 	};
 
+	const handleEdit = (product) => {
+		setEditProductId(product.id);
+		setProductName(product.product_name);
+		setProductCateory(product.category_id);
+		setProductBrandName(product.brand_name);
+		setProductPrice(product.product_price);
+		setProductDisPrice(product.discount_price);
+		setProductStock(product.product_stock);
+		setProductDesc(product.description);
+		setFile(product.product_image);
+		handleOpenAddProductModal();
+	};
+
 	useEffect(() => {
-		getProductData();
+		getProductData("start");
 	}, []);
 
 	const ProductCard = ({ product }) => {
 		const [hovered, setHovered] = useState(false);
-
+		console.log(product);
 		return (
 			<Box
 				onMouseEnter={() => setHovered(true)}
@@ -209,6 +225,7 @@ function SellerProducts() {
 									size="lg"
 									color="blue"
 									variant="filled"
+									onClick={(e) => handleEdit(product)}
 								>
 									<IconPencil size="1.2rem" />
 								</ActionIcon>
@@ -331,13 +348,32 @@ function SellerProducts() {
 								required
 							/>
 
+							{editProductId && typeof file === "string" && (
+								<Image
+									src={file}
+									alt="Current Product"
+									radius="md"
+									withPlaceholder
+									style={{
+										maxWidth: "150px",
+										height: "auto",
+										objectFit: "cover",
+										marginBottom: "0.5rem",
+									}}
+								/>
+							)}
+
 							<FileInput
-								label="Upload Image"
+								label={
+									editProductId
+										? "Change Image"
+										: "Upload Image"
+								}
 								placeholder="Choose image"
 								accept="image/*"
-								value={file}
+								value={typeof file === "string" ? null : file}
 								onChange={setFile}
-								required
+								required={!editProductId}
 							/>
 
 							<Group justify="flex-end" mt="md">

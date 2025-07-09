@@ -18,17 +18,22 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 import { useMantineColorScheme } from "@mantine/core";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function CustomerHeaderMenu() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "Products", path: "/favorites" },
+    { label: "Products", path: "/customer/products" },
     { label: "Orders", path: "/collections" },
   ];
+
+  const handleCustomerCart = () => {
+    navigate("/customer/Cart");
+  };
 
   return (
     <Box
@@ -43,7 +48,7 @@ function CustomerHeaderMenu() {
         boxShadow: theme.shadows.xs,
       })}
     >
-      <Container size="xl" px="md" py="xs">
+      <Box px="md" py="xs">
         <Group justify="space-between" align="center" wrap="nowrap">
           <Group gap="lg" align="center" wrap="nowrap">
             <img
@@ -62,7 +67,7 @@ function CustomerHeaderMenu() {
                     location.pathname === item.path ? "filled" : "subtle"
                   }
                   color="blue"
-                  size="lg"
+                  size="sm"
                   radius="xl"
                 >
                   {item.label}
@@ -73,7 +78,13 @@ function CustomerHeaderMenu() {
 
           {/* Right Side - Icons */}
           <Group gap="xs">
-            <ActionIcon variant="light" size="lg" title="🛒 Cart " color="blue">
+            <ActionIcon
+              variant="light"
+              size="lg"
+              title="🛒 Cart "
+              color="blue"
+              onClick={handleCustomerCart}
+            >
               <IconShoppingCart size={18} />
             </ActionIcon>
             <ActionIcon
@@ -131,7 +142,7 @@ function CustomerHeaderMenu() {
             </Menu>
           </Group>
         </Group>
-      </Container>
+      </Box>
     </Box>
   );
 }
