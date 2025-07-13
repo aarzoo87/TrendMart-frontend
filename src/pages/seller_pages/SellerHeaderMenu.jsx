@@ -28,7 +28,7 @@ function SellerHeaderMenu() {
     { label: "Dashboard", path: "/seller/dashboard" },
     { label: "Products", path: "/seller/products" },
     { label: "Orders", path: "/seller/orders" },
-    { label: "Sales", path: "/sales_reports" },
+    { label: "Sales", path: "/seller/sales" },
   ];
 
   const handlelogout = () => {
@@ -49,7 +49,7 @@ function SellerHeaderMenu() {
         boxShadow: theme.shadows.xs,
       })}
     >
-      <Container size="xl" px="md" py="xs">
+      <Box px="md" py="xs">
         <Group justify="space-between" align="center" wrap="nowrap">
           <Group gap="lg" align="center" wrap="nowrap">
             <img
@@ -135,7 +135,7 @@ function SellerHeaderMenu() {
             </Menu>
           </Group>
         </Group>
-      </Container>
+      </Box>
     </Box>
   );
 }

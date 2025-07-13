@@ -372,7 +372,20 @@ function SellerProducts() {
 								placeholder="Choose image"
 								accept="image/*"
 								value={typeof file === "string" ? null : file}
-								onChange={setFile}
+								onChange={(selectedFile) => {
+									const maxSize = 2 * 1024 * 1024;
+									if (
+										selectedFile &&
+										selectedFile.size > maxSize
+									) {
+										alert(
+											"File is too large. Max size is 2MB.",
+										);
+										setFile(null);
+										return;
+									}
+									setFile(selectedFile);
+								}}
 								required={!editProductId}
 							/>
 

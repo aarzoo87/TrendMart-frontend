@@ -1,7 +1,7 @@
 import React from "react";
 import SellerHeaderMenu from "./SellerHeaderMenu";
 
-function SellerDashboard() {
+function SellerSales() {
 	return (
 		<>
 			<SellerHeaderMenu />
@@ -21,4 +21,4 @@ function SellerDashboard() {
 	);
 }
 
-export default SellerDashboard;
+export default SellerSales;

@@ -10,6 +10,8 @@ import CustomerProduct from "./pages/customer_pages/CustomerProduct";
 import ProductDetailPage from "./pages/customer_pages/ProductDetailPage";
 import CustomerCart from "./pages/customer_pages/CustomerCart";
 import CustomerCheckout from "./pages/customer_pages/CustomerCheckout";
+import SellerOrders from "./pages/seller_pages/SellerOrders";
+import SellerSales from "./pages/seller_pages/SellerSales";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/seller/home" element={<SellerHeaderMenu />} />
           <Route path="/seller/dashboard" element={<SellerDashboard />} />
           <Route path="/seller/products" element={<SellerProducts />} />
+          <Route path="/seller/orders" element={<SellerOrders />} />
+          <Route path="/seller/sales" element={<SellerSales />} />
         </Routes>
       </Router>
     </>
